@@ -1,19 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
-<?import javafx.scene.image.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.web.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.web.WebView?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <bottom>
-      <AnchorPane prefHeight="38.0" prefWidth="600.0" BorderPane.alignment="CENTER">
+      <AnchorPane prefHeight="0.0" prefWidth="600.0" BorderPane.alignment="CENTER">
          <children>
-            <Label layoutX="514.0" layoutY="5.0" text="Lignes : " AnchorPane.bottomAnchor="4.599999999999998" AnchorPane.rightAnchor="42.799999999999955" />
-            <Label layoutX="398.0" layoutY="5.0" text="Caractères : " AnchorPane.bottomAnchor="4.599999999999998" AnchorPane.rightAnchor="137.2" />
-            <TextField layoutX="463.0" layoutY="6.0" prefHeight="15.0" prefWidth="42.0" />
             <Separator layoutX="-1.0" layoutY="-4.0" prefHeight="8.0" prefWidth="600.0" />
-            <TextField layoutX="557.0" layoutY="5.0" prefHeight="26.0" prefWidth="32.0" />
+            <HBox alignment="BOTTOM_RIGHT" layoutX="392.0" layoutY="39.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="200.0">
+               <children>
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="65.0" text="Caractères : " />
+                  <TextField editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="43.0" />
+                  <Label maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="18.0" prefWidth="50.0" text="  Lignes : " />
+                  <TextField editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="26.0" prefWidth="32.0" />
+               </children>
+            </HBox>
          </children></AnchorPane>
    </bottom>
 <top>
