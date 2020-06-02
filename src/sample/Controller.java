@@ -32,6 +32,10 @@ import java.util.ResourceBundle;
 
 public class Controller implements Initializable {
 
+    boolean isFileSaved = false;
+    boolean isFileNamed = false;
+    String workingString;
+
     @FXML
     private Label lignes, caracteres;
 
@@ -50,8 +54,8 @@ public class Controller implements Initializable {
     }
 
     public void updateView() {
-        engine = viewHtml.getEngine();
-        engine.loadContent(textHtml.getText());
+       // engine = viewHtml.getEngine();
+       // engine.loadContent(textHtml.getText());
     }
 
     public void about(ActionEvent actionEvent) {
@@ -65,9 +69,13 @@ public class Controller implements Initializable {
 
     public void cut(ActionEvent actionEvent) { }
 
-    public void copy(ActionEvent actionEvent) { }
+    public void copy(ActionEvent actionEvent) {
+    // workingString = textHtml.getSelectedText();
+    }
 
-    public void paste(ActionEvent actionEvent) { }
+    public void paste(ActionEvent actionEvent) {
+     // textHtml.setText(workingString);
+    }
 
     public void newFile(ActionEvent actionEvent) { }
 
