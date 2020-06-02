@@ -1,24 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.Menu?>
-<?import javafx.scene.control.MenuBar?>
-<?import javafx.scene.control.MenuItem?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.Tab?>
-<?import javafx.scene.control.TabPane?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.web.WebView?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.web.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/10.0.2-internal" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <center>
       <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
@@ -33,7 +21,7 @@
                         <items>
                         <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="565.0" prefWidth="350.0">
                            <children>
-                              <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="565.0" prefWidth="350.0" />
+                              <TextArea maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyReleased="#updateView" prefHeight="565.0" prefWidth="350.0" />
                            </children>
                         </Pane>
                         <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="565.0" prefWidth="350.0">
@@ -61,7 +49,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Label>
-                  <Label text="000">
+                  <Label fx:id="caracteres" text="000">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -71,7 +59,7 @@
                         <Insets right="10.0" />
                      </HBox.margin>
                   </Label>
-                  <Label text="000">
+                  <Label fx:id="lignes" text="000">
                      <HBox.margin>
                         <Insets right="10.0" />
                      </HBox.margin>
@@ -90,31 +78,31 @@
                     <menus>
                       <Menu mnemonicParsing="false" text="Fichier">
                         <items>
-                          <MenuItem mnemonicParsing="false" text="Nouveau" />
-                              <MenuItem mnemonicParsing="false" text="Ouvrir" />
-                              <MenuItem mnemonicParsing="false" text="Enregistrer" />
-                              <MenuItem mnemonicParsing="false" text="Enregistrer Sous" />
-                              <MenuItem mnemonicParsing="false" text="Fermer" />
-                              <MenuItem mnemonicParsing="false" text="Quitter" />
+                          <MenuItem mnemonicParsing="false" onAction="#newFile" text="Nouveau" />
+                              <MenuItem mnemonicParsing="false" onAction="#openFile" text="Ouvrir" />
+                              <MenuItem mnemonicParsing="false" onAction="#saveFile" text="Enregistrer" />
+                              <MenuItem mnemonicParsing="false" onAction="#saveFileAs" text="Enregistrer Sous" />
+                              <MenuItem mnemonicParsing="false" onAction="#closeFile" text="Fermer" />
+                              <MenuItem mnemonicParsing="false" onAction="#quit" text="Quitter" />
                         </items>
                       </Menu>
                       <Menu mnemonicParsing="false" text="Édition">
                         <items>
-                          <MenuItem mnemonicParsing="false" text="Copier" />
-                              <MenuItem mnemonicParsing="false" text="Couper" />
-                              <MenuItem mnemonicParsing="false" text="Coller" />
+                          <MenuItem mnemonicParsing="false" onAction="#copy" text="Copier" />
+                              <MenuItem mnemonicParsing="false" onAction="#cut" text="Couper" />
+                              <MenuItem mnemonicParsing="false" onAction="#paste" text="Coller" />
                         </items>
                       </Menu>
                       <Menu mnemonicParsing="false" text="Aide">
                         <items>
-                          <MenuItem mnemonicParsing="false" text="À propos" />
+                          <MenuItem mnemonicParsing="false" onAction="#about" text="À propos" />
                         </items>
                       </Menu>
                     </menus>
                   </MenuBar>
                   <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="700.0">
                      <children>
-                        <ImageView fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="29.0" fitWidth="33.0" onMouseClicked="#newFile" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/new_file.png" />
                            </image>
@@ -122,7 +110,7 @@
                               <Insets left="15.0" top="5.0" />
                            </HBox.margin>
                         </ImageView>
-                        <ImageView fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="29.0" fitWidth="33.0" onMouseClicked="#openFile" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/open_file.png" />
                            </image>
@@ -130,7 +118,7 @@
                               <Insets left="15.0" top="5.0" />
                            </HBox.margin>
                         </ImageView>
-                        <ImageView fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="29.0" fitWidth="33.0" onMouseClicked="#saveFile" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/save_file.png" />
                            </image>
@@ -138,7 +126,7 @@
                               <Insets left="15.0" top="5.0" />
                            </HBox.margin>
                         </ImageView>
-                        <ImageView fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="29.0" fitWidth="33.0" onMouseClicked="#saveFileAs" pickOnBounds="true" preserveRatio="true">
                            <image>
                               <Image url="@../img/save_as.png" />
                            </image>
