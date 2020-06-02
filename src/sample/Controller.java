@@ -1,5 +1,6 @@
 package sample;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.event.*;
 import javafx.fxml.Initializable;
@@ -88,7 +89,7 @@ public class Controller implements Initializable {
     public void closeFile(ActionEvent actionEvent) { }
 
     public void quit(ActionEvent actionEvent) {
-        ((Stage)(((javafx.scene.control.Button)actionEvent.getSource()).getScene().getWindow())).close();
+        Platform.exit();
     }
 
 
