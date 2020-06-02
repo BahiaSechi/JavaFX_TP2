@@ -45,8 +45,7 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        caracteres.setText("0");
-        lignes.setText("0");
+
     }
 
     public void updateView() {
