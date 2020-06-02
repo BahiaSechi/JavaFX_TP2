@@ -11,9 +11,9 @@
          <children>
             <Label layoutX="514.0" layoutY="5.0" text="Lignes : " AnchorPane.bottomAnchor="4.599999999999998" AnchorPane.rightAnchor="42.799999999999955" />
             <Label layoutX="398.0" layoutY="5.0" text="Caractères : " AnchorPane.bottomAnchor="4.599999999999998" AnchorPane.rightAnchor="137.2" />
-            <TextField layoutX="463.0" layoutY="6.0" prefHeight="15.0" prefWidth="42.0" />
+            <TextField fx:id="caracteres" layoutX="463.0" layoutY="6.0" prefHeight="15.0" prefWidth="42.0" />
             <Separator layoutX="-1.0" layoutY="-4.0" prefHeight="8.0" prefWidth="600.0" />
-            <TextField layoutX="557.0" layoutY="5.0" prefHeight="26.0" prefWidth="32.0" />
+            <TextField fx:id="lignes" layoutX="557.0" layoutY="5.0" prefHeight="26.0" prefWidth="32.0" />
          </children></AnchorPane>
    </bottom>
 <top>
@@ -73,10 +73,22 @@
                 </Tab>
               </tabs>
             </TabPane>
-            <ImageView fitHeight="29.0" fitWidth="33.0" layoutX="14.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="29.0" fitWidth="33.0" layoutX="61.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="29.0" fitWidth="33.0" layoutX="123.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
-            <ImageView fitHeight="29.0" fitWidth="33.0" layoutX="172.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true" />
+            <ImageView fitHeight="29.0" fitWidth="33.0" layoutX="14.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/new_file.png" />
+               </image></ImageView>
+            <ImageView fitHeight="29.0" fitWidth="33.0" layoutX="61.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/open_file.png" />
+               </image></ImageView>
+            <ImageView fitHeight="29.0" fitWidth="33.0" layoutX="123.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/save_file.png" />
+               </image></ImageView>
+            <ImageView fitHeight="29.0" fitWidth="33.0" layoutX="172.0" layoutY="1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../img/save_as.png" />
+               </image></ImageView>
          </children>
       </AnchorPane>
    </center>
