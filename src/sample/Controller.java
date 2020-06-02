@@ -1,9 +1,10 @@
 package sample;
 
 import javafx.fxml.FXML;
-import javafx.event.ActionEvent;
+import javafx.event.*;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Alert;
+import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -32,13 +33,13 @@ import java.util.ResourceBundle;
 public class Controller implements Initializable {
 
     @FXML
+    private Label lignes, caracteres;
+
+    @FXML
     private TextArea textHtml;
 
     @FXML
     private WebView viewHtml;
-
-    @FXML
-    private TextField caracteres, lignes;
 
     @FXML
     WebEngine engine;
