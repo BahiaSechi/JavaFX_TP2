@@ -20,7 +20,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="700.0" prefWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <center>
-      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="635.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="625.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
             <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="700.0">
                <children>
@@ -54,7 +54,7 @@
                     </SplitPane>
                </children>
             </VBox>
-            <HBox alignment="CENTER_RIGHT" layoutY="602.0" prefHeight="33.0" prefWidth="700.0">
+            <HBox alignment="TOP_RIGHT" layoutY="602.0" prefHeight="33.0" prefWidth="700.0">
                <children>
                   <Label text="Caractères : ">
                      <HBox.margin>
@@ -82,9 +82,9 @@
       </AnchorPane>
    </center>
    <top>
-      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="700.0" BorderPane.alignment="CENTER">
+      <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="700.0" BorderPane.alignment="CENTER">
          <children>
-            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="65.0" prefWidth="700.0">
+            <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="75.0" prefWidth="700.0">
                <children>
                   <MenuBar>
                     <menus>
@@ -112,7 +112,7 @@
                       </Menu>
                     </menus>
                   </MenuBar>
-                  <HBox alignment="CENTER_LEFT" prefHeight="100.0" prefWidth="700.0">
+                  <HBox alignment="CENTER_LEFT">
                      <children>
                         <ImageView fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
                            <image>
