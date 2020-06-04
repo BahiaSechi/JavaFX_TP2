@@ -55,10 +55,13 @@ public class Controller implements Initializable {
 
     boolean isFileSaved = false;
     boolean isFileNamed = false;
-    String contenuTxt;
+    String workingString;
 
     @FXML
     private ImageView newFileImage, openFileImage, saveFileImage, saveFileAsImage;
+
+    @FXML
+    private ToggleButton test;
 
     @FXML
     private Label lignes, caracteres;
@@ -77,15 +80,14 @@ public class Controller implements Initializable {
     private Stage primaryStage;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) { }
+    public void initialize(URL location, ResourceBundle resources) {
+    }
 
     public void updateView() {
-        // Update the view
         engine = viewHtml.getEngine();
         engine.loadContent(textHtml.getText());
-        String text = textHtml.getText();
 
-        // Count characters and lines
+        String text = textHtml.getText();
         caracteres.setText(String.valueOf(text.length()));
         caracteres.setText(Integer.toString(textHtml.getText().length()));
         String tempcount = textHtml.getText();
@@ -102,29 +104,40 @@ public class Controller implements Initializable {
         about.show();
     }
 
-    public void cut(ActionEvent actionEvent) { }
-
     public void copy(ActionEvent actionEvent) {
-    // workingString = textHtml.getSelectedText();
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent content = new ClipboardContent();
+        content.putString(textHtml.getSelectedText());
+        clipboard.setContent(content);
+    }
+
+    public void cut(ActionEvent actionEvent) {
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        ClipboardContent content = new ClipboardContent();
+        content.putString(textHtml.getSelectedText());
+        clipboard.setContent(content);
+        textHtml.deleteText(textHtml.getSelection());
+
+        engine = viewHtml.getEngine();
+        engine.loadContent(textHtml.getText());
     }
 
     public void paste(ActionEvent actionEvent) {
         Clipboard clipboard = Clipboard.getSystemClipboard();
         textHtml.setText(textHtml.getText() + clipboard.getString());
 
-        // Update the view
         engine = viewHtml.getEngine();
         engine.loadContent(textHtml.getText());
     }
 
     public void newFile(ActionEvent actionEvent) {
-        //TODO PROBLEME TAB
-        closeFile();
+        /** closeFile();
         isFileNamed = false;
         isFileSaved = false;
 
         tabs.getTabs().get(0).setText("unnamed.html");
         tabs.getTabs().add(new Tab("unnamed.html"));
+         */
     }
 
     public void openFile(ActionEvent actionEvent) {
@@ -156,12 +169,7 @@ public class Controller implements Initializable {
     public void saveFileAs(ActionEvent actionEvent) { }
 
     @FXML
-    public void closeFile() {
-        //TODO PROBLEME TAB
-        textHtml.clear();
-        updateView();
-        tabs.getTabs().get(0).setText("unnamed.html");
-    }
+    public void closeFile() { }
 
     public void quit(ActionEvent actionEvent) {
         Platform.exit();
