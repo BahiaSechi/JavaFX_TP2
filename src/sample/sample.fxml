@@ -86,7 +86,7 @@
       </VBox>
       <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="700.0" VBox.vgrow="ALWAYS">
          <children>
-            <TabPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="35.0" minWidth="700.0" tabClosingPolicy="UNAVAILABLE">
+            <TabPane fx:id="tabs" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="35.0" minWidth="700.0" tabClosingPolicy="UNAVAILABLE">
                <tabs>
                   <Tab text="Tab 1" />
                </tabs>
@@ -101,7 +101,7 @@
                               <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
                            </padding>
                         </Label>
-                        <WebView minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="SOMETIMES" />
+                        <WebView fx:id="viewHtml" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="SOMETIMES" />
                      </children>
                   </VBox>
                </items>

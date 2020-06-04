@@ -1,23 +1,33 @@
 package sample;
 
 import javafx.application.Platform;
+import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
 import javafx.event.*;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.Tab;
+import javafx.scene.control.TabPane;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
 import javax.swing.text.html.ImageView;
 import java.awt.*;
+import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
+import java.util.StringTokenizer;
 
 /**
  * Address :
@@ -53,12 +63,21 @@ public class Controller implements Initializable {
     @FXML
     WebEngine engine;
 
+    @FXML
+    TabPane tabs;
+    private Stage primaryStage;
+
     @Override
     public void initialize(URL location, ResourceBundle resources) {
 
     }
 
     public void updateView() {
+        engine = viewHtml.getEngine();
+        engine.loadContent(textHtml.getText());
+
+        String text = textHtml.getText();
+        caracteres.setText(String.valueOf(text.length()));
         caracteres.setText(Integer.toString(textHtml.getText().length()));
         String tempcount = textHtml.getText();
         String[] linearray = tempcount.split("\n");
@@ -69,10 +88,10 @@ public class Controller implements Initializable {
 
     public void about(ActionEvent actionEvent) {
         Alert about = new Alert(Alert.AlertType.INFORMATION);
-        about.setTitle("About");
         about.setContentText("This project is part of the programming course (ENSICAEN - Engineering School). \n" +
                 "Authors : BURON Manfred & SECHI Bahia \n" +
                 "Date : June 2020");
+        about.setTitle("About");
         about.show();
     }
 
@@ -87,15 +106,45 @@ public class Controller implements Initializable {
     }
 
     public void newFile(ActionEvent actionEvent) {
+        /** closeFile();
+        isFileNamed = false;
+        isFileSaved = false;
+
+        tabs.getTabs().get(0).setText("unnamed.html");
+        tabs.getTabs().add(new Tab("unnamed.html"));
+         */
     }
 
-    public void openFile(ActionEvent actionEvent) { }
+    public void openFile(ActionEvent actionEvent) {
+       /** // Show files with HTML extension
+        FileChooser chooser = new FileChooser();
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("HTML files (*.html)", "*.html");
+        chooser.getExtensionFilters().add(extFilter);
+
+        final Label fileLabel = new Label();
+
+        // Show open file dialog
+        File file = chooser.showOpenDialog(primaryStage);
+        if (file != null) {
+            fileLabel.setText(file.getPath());
+        }
+
+        VBox vBox = new VBox(30);
+        vBox.setAlignment(Pos.BASELINE_CENTER);
+
+        StackPane root = new StackPane();
+        root.getChildren().add(vBox);
+        primaryStage.setScene(new Scene(root, 300, 250));
+        primaryStage.show();
+        */
+    }
 
     public void saveFile(ActionEvent actionEvent) { }
 
     public void saveFileAs(ActionEvent actionEvent) { }
 
-    public void closeFile(ActionEvent actionEvent) { }
+    @FXML
+    public void closeFile() { }
 
     public void quit(ActionEvent actionEvent) {
         Platform.exit();
