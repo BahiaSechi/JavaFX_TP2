@@ -158,6 +158,7 @@ public class Controller implements Initializable {
     @FXML
     public void closeFile() {
         //TODO PROBLEME TAB
+
         textHtml.clear();
         updateView();
         tabs.getTabs().get(0).setText("unnamed.html");
