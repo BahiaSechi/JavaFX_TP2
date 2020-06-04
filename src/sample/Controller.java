@@ -4,13 +4,17 @@ import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.event.*;
 import javafx.fxml.Initializable;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.stage.Stage;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 
+import javax.swing.text.html.ImageView;
 import java.awt.*;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -55,6 +59,10 @@ public class Controller implements Initializable {
     }
 
     public void updateView() {
+        caracteres.setText(Integer.toString(textHtml.getText().length()));
+        String tempcount = textHtml.getText();
+        String[] linearray = tempcount.split("\n");
+        lignes.setText(Integer.toString(linearray.length));
        // engine = viewHtml.getEngine();
        // engine.loadContent(textHtml.getText());
     }
@@ -78,7 +86,8 @@ public class Controller implements Initializable {
      // textHtml.setText(workingString);
     }
 
-    public void newFile(ActionEvent actionEvent) { }
+    public void newFile(ActionEvent actionEvent) {
+    }
 
     public void openFile(ActionEvent actionEvent) { }
 
