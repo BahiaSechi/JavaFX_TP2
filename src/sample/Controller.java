@@ -55,13 +55,10 @@ public class Controller implements Initializable {
 
     boolean isFileSaved = false;
     boolean isFileNamed = false;
-    String workingString;
+    String contenuTxt;
 
     @FXML
     private ImageView newFileImage, openFileImage, saveFileImage, saveFileAsImage;
-
-    @FXML
-    private ToggleButton test;
 
     @FXML
     private Label lignes, caracteres;
@@ -80,21 +77,20 @@ public class Controller implements Initializable {
     private Stage primaryStage;
 
     @Override
-    public void initialize(URL location, ResourceBundle resources) {
-    }
+    public void initialize(URL location, ResourceBundle resources) { }
 
     public void updateView() {
+        // Update the view
         engine = viewHtml.getEngine();
         engine.loadContent(textHtml.getText());
-
         String text = textHtml.getText();
+
+        // Count characters and lines
         caracteres.setText(String.valueOf(text.length()));
         caracteres.setText(Integer.toString(textHtml.getText().length()));
         String tempcount = textHtml.getText();
         String[] linearray = tempcount.split("\n");
         lignes.setText(Integer.toString(linearray.length));
-       // engine = viewHtml.getEngine();
-       // engine.loadContent(textHtml.getText());
     }
 
     public void about(ActionEvent actionEvent) {
@@ -115,16 +111,20 @@ public class Controller implements Initializable {
     public void paste(ActionEvent actionEvent) {
         Clipboard clipboard = Clipboard.getSystemClipboard();
         textHtml.setText(textHtml.getText() + clipboard.getString());
+
+        // Update the view
+        engine = viewHtml.getEngine();
+        engine.loadContent(textHtml.getText());
     }
 
     public void newFile(ActionEvent actionEvent) {
-        /** closeFile();
+        //TODO PROBLEME TAB
+        closeFile();
         isFileNamed = false;
         isFileSaved = false;
 
         tabs.getTabs().get(0).setText("unnamed.html");
         tabs.getTabs().add(new Tab("unnamed.html"));
-         */
     }
 
     public void openFile(ActionEvent actionEvent) {
@@ -156,7 +156,12 @@ public class Controller implements Initializable {
     public void saveFileAs(ActionEvent actionEvent) { }
 
     @FXML
-    public void closeFile() { }
+    public void closeFile() {
+        //TODO PROBLEME TAB
+        textHtml.clear();
+        updateView();
+        tabs.getTabs().get(0).setText("unnamed.html");
+    }
 
     public void quit(ActionEvent actionEvent) {
         Platform.exit();
