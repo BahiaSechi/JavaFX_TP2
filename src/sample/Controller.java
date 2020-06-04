@@ -10,19 +10,25 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
+import javafx.scene.image.Image;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.layout.Background;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import javafx.scene.input.ClipboardContent;
+import javafx.scene.input.Clipboard;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.scene.image.ImageView;
 
-import javax.swing.text.html.ImageView;
 import java.awt.*;
 import java.io.File;
 import java.net.URL;
@@ -52,6 +58,12 @@ public class Controller implements Initializable {
     String workingString;
 
     @FXML
+    private ImageView newFileImage, openFileImage, saveFileImage, saveFileAsImage;
+
+    @FXML
+    private ToggleButton test;
+
+    @FXML
     private Label lignes, caracteres;
 
     @FXML
@@ -69,7 +81,6 @@ public class Controller implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-
     }
 
     public void updateView() {
@@ -102,7 +113,8 @@ public class Controller implements Initializable {
     }
 
     public void paste(ActionEvent actionEvent) {
-     // textHtml.setText(workingString);
+        Clipboard clipboard = Clipboard.getSystemClipboard();
+        textHtml.setText(textHtml.getText() + clipboard.getString());
     }
 
     public void newFile(ActionEvent actionEvent) {
