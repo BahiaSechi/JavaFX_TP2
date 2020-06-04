@@ -18,7 +18,10 @@ import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.image.ImageView;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.ArrayList;
@@ -46,7 +49,6 @@ public class Controller implements Initializable {
     boolean isFileNamed = false;
     String workingString;
     private ArrayList<String> tabs_text = new ArrayList<>();
-
 
     @FXML
     private ImageView newFileImage, openFileImage, saveFileImage, saveFileAsImage;
@@ -87,7 +89,8 @@ public class Controller implements Initializable {
         String[] linearray = tempcount.split("\n");
         lignes.setText(Integer.toString(linearray.length));
 
-        tabs_text.set(tabs.getSelectionModel().getSelectedIndex(), textHtml.getText());
+
+        //this.tabs_text.set(tabs.getSelectionModel().getSelectedIndex(), textHtml.getText());
     }
 
     public void about(ActionEvent actionEvent) {
@@ -136,27 +139,40 @@ public class Controller implements Initializable {
     }
 
     public void openFile(ActionEvent actionEvent) {
-        // Show files with HTML extension
+       // Show files with HTML extension
         FileChooser chooser = new FileChooser();
+        chooser.setTitle("Open a HTML file");
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("HTML files (*.html)", "*.html");
         chooser.getExtensionFilters().add(extFilter);
 
-        final Label fileLabel = new Label();
+        // Open window to choose a file
+        File file = chooser.showOpenDialog(new Stage());
 
-        // Show open file dialog
-        File file = chooser.showOpenDialog(primaryStage);
+        // Continue reading until the end of the file
+        // doc : https://www.geeksforgeeks.org/different-ways-reading-text-file-java/
         if (file != null) {
-            fileLabel.setText(file.getPath());
+            try (BufferedReader buffReader = new BufferedReader(new FileReader(file))) {
+                textHtml.clear();
+                updateView();
+
+                String stringInOpennedFile = "";
+
+                do {
+                    stringInOpennedFile = buffReader.readLine();
+                    if (stringInOpennedFile != null) {
+                        textHtml.appendText(stringInOpennedFile + "\n");
+                    }
+                } while (stringInOpennedFile != null);
+
+                tabs.getTabs().get(0).setText(file.getName());
+                isFileSaved = true;
+
+            } catch (IOException e) {
+                e.printStackTrace(System.err);
+            }
         }
-
-        VBox vBox = new VBox(30);
-        vBox.setAlignment(Pos.BASELINE_CENTER);
-
-        StackPane root = new StackPane();
-        root.getChildren().add(vBox);
-        primaryStage.setScene(new Scene(root, 300, 250));
-        primaryStage.show();
-
+        engine = viewHtml.getEngine();
+        engine.loadContent(textHtml.getText());
     }
 
     public void saveFile(ActionEvent actionEvent) { }
@@ -177,7 +193,6 @@ public class Controller implements Initializable {
     }
 
     public void test(MouseEvent actionEvent) {
-        System.out.println("coucou");
         textHtml.setText(tabs_text.get(tabs.getSelectionModel().getSelectedIndex()));
     }
 
