@@ -1,39 +1,23 @@
 package sample;
 
 import javafx.application.Platform;
-import javafx.beans.value.ChangeListener;
 import javafx.fxml.FXML;
-import javafx.event.*;
 import javafx.fxml.Initializable;
 import javafx.scene.control.TextArea;
-import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
-import javafx.scene.control.Tab;
 import javafx.scene.control.TabPane;
-import javafx.scene.image.Image;
 import javafx.scene.input.ClipboardContent;
-import javafx.scene.layout.Background;
-import javafx.scene.layout.StackPane;
-import javafx.scene.layout.VBox;
-import javafx.scene.text.Text;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
-import javafx.scene.input.ClipboardContent;
 import javafx.scene.input.Clipboard;
-import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.scene.image.ImageView;
 
-import java.awt.*;
-import java.io.File;
 import java.net.URL;
 import java.util.ResourceBundle;
-import java.util.StringTokenizer;
 
 /**
  * Address :
@@ -169,7 +153,13 @@ public class Controller implements Initializable {
     public void saveFileAs(ActionEvent actionEvent) { }
 
     @FXML
-    public void closeFile() { }
+    public void closeFile() {
+        //TODO PROBLEME TAB
+
+        textHtml.clear();
+        updateView();
+        tabs.getTabs().get(0).setText("unnamed.html");
+    }
 
     public void quit(ActionEvent actionEvent) {
         Platform.exit();
