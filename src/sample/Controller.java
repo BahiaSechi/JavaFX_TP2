@@ -3,19 +3,24 @@ package sample;
 import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.control.TextArea;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Label;
-import javafx.scene.control.ToggleButton;
-import javafx.scene.control.TabPane;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.input.ClipboardContent;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 import javafx.scene.input.Clipboard;
+import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 import javafx.event.ActionEvent;
 import javafx.scene.image.ImageView;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -39,7 +44,6 @@ public class Controller implements Initializable {
 
     boolean isFileSaved = false;
     boolean isFileNamed = false;
-    String workingString;
 
     @FXML
     private ImageView newFileImage, openFileImage, saveFileImage, saveFileAsImage;
@@ -61,7 +65,6 @@ public class Controller implements Initializable {
 
     @FXML
     TabPane tabs;
-    private Stage primaryStage;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -115,37 +118,48 @@ public class Controller implements Initializable {
     }
 
     public void newFile(ActionEvent actionEvent) {
-        /** closeFile();
+        closeFile();
         isFileNamed = false;
         isFileSaved = false;
 
         tabs.getTabs().get(0).setText("unnamed.html");
         tabs.getTabs().add(new Tab("unnamed.html"));
-         */
     }
 
     public void openFile(ActionEvent actionEvent) {
-       /** // Show files with HTML extension
+       // Show files with HTML extension
         FileChooser chooser = new FileChooser();
+        chooser.setTitle("Open a HTML file");
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("HTML files (*.html)", "*.html");
         chooser.getExtensionFilters().add(extFilter);
 
-        final Label fileLabel = new Label();
+        // Open window to choose a file
+        File file = chooser.showOpenDialog(new Stage());
 
-        // Show open file dialog
-        File file = chooser.showOpenDialog(primaryStage);
+        // Continue reading until the end of the file
+        // doc : https://www.geeksforgeeks.org/different-ways-reading-text-file-java/
         if (file != null) {
-            fileLabel.setText(file.getPath());
+            try (BufferedReader buffReader = new BufferedReader(new FileReader(file))) {
+                textHtml.clear();
+                updateView();
+
+                String stringInOpennedFile = "";
+
+                do {
+                    stringInOpennedFile = buffReader.readLine();
+                    if (stringInOpennedFile != null) {
+                        textHtml.appendText(stringInOpennedFile + "\n");
+                    }
+                } while (stringInOpennedFile != null);
+
+                tabs.getTabs().get(0).setText(file.getName());
+
+                isFileSaved = true;
+
+            } catch (IOException e) {
+                e.printStackTrace(System.err);
+            }
         }
-
-        VBox vBox = new VBox(30);
-        vBox.setAlignment(Pos.BASELINE_CENTER);
-
-        StackPane root = new StackPane();
-        root.getChildren().add(vBox);
-        primaryStage.setScene(new Scene(root, 300, 250));
-        primaryStage.show();
-        */
     }
 
     public void saveFile(ActionEvent actionEvent) { }
