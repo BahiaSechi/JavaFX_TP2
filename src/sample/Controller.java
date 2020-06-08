@@ -271,7 +271,7 @@ public class Controller implements Initializable {
     }
 
     public void test(MouseEvent actionEvent) {
-        System.out.println("coucou");
+        // System.out.println("coucou");
         //textHtml.setText(Integer.toString(tabs.getSelectionModel().getSelectedIndex()));
     }
 

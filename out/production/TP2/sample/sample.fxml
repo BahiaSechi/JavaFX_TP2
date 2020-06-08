@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.web.WebView?>
+
+<VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="700.0" minWidth="700.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+   <children>
+      <VBox minHeight="75.0" minWidth="700.0">
+         <children>
+            <MenuBar>
+               <menus>
+                  <Menu mnemonicParsing="false" text="Fichier">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#newFile" text="Nouveau" />
+                        <MenuItem mnemonicParsing="false" onAction="#openFile" text="Ouvrir" />
+                        <MenuItem mnemonicParsing="false" onAction="#saveFile" text="Enregistrer" />
+                        <MenuItem mnemonicParsing="false" onAction="#saveFileAs" text="Enregistrer Sous" />
+                        <MenuItem mnemonicParsing="false" onAction="#closeFile" text="Fermer" />
+                        <MenuItem mnemonicParsing="false" onAction="#quit" text="Quitter" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Édition">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#copy" text="Copier" />
+                        <MenuItem mnemonicParsing="false" onAction="#cut" text="Couper" />
+                        <MenuItem mnemonicParsing="false" onAction="#paste" text="Coller" />
+                     </items>
+                  </Menu>
+                  <Menu mnemonicParsing="false" text="Aide">
+                     <items>
+                        <MenuItem mnemonicParsing="false" onAction="#about" text="À propos" />
+                     </items>
+                  </Menu>
+               </menus>
+            </MenuBar>
+            <HBox alignment="CENTER_LEFT">
+               <children>
+                  <ImageView fx:id="newFileImage" fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#newFileImage">
+                     <image>
+                        <Image url="@../img/new_file.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="15.0" top="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="openFileImage" fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#openFileImage">
+                     <image>
+                        <Image url="@../img/open_file.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="15.0" top="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="saveFileImage" fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#saveFileImage">
+                     <image>
+                        <Image url="@../img/save_file.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="15.0" top="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+                  <ImageView fx:id="saveFileAsImage" fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#saveFileAsImage">
+                     <image>
+                        <Image url="@../img/save_as.png" />
+                     </image>
+                     <HBox.margin>
+                        <Insets left="15.0" top="5.0" />
+                     </HBox.margin>
+                  </ImageView>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+      <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="600.0" minWidth="700.0" VBox.vgrow="ALWAYS">
+         <children>
+            <TabPane fx:id="tabs" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="35.0" minWidth="700.0" onMouseClicked="#test">
+               <tabs>
+                  <Tab text="Tab 1" />
+               </tabs>
+            </TabPane>
+            <SplitPane dividerPositions="0.5" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="565.0" minWidth="700.0" VBox.vgrow="ALWAYS">
+               <items>
+                  <TextArea fx:id="textHtml" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="565.0" minWidth="350.0" onKeyReleased="#updateView" />
+                  <VBox maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" minHeight="565.0" minWidth="350.0">
+                     <children>
+                        <Label contentDisplay="CENTER" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" text="Aperçu :">
+                           <padding>
+                              <Insets bottom="5.0" left="15.0" right="15.0" top="5.0" />
+                           </padding>
+                        </Label>
+                        <WebView fx:id="viewHtml" minHeight="-1.0" minWidth="-1.0" prefHeight="-1.0" prefWidth="-1.0" VBox.vgrow="SOMETIMES" />
+                     </children>
+                  </VBox>
+               </items>
+            </SplitPane>
+         </children>
+      </VBox>
+      <HBox alignment="CENTER_RIGHT" fillHeight="false" maxHeight="30.0" minHeight="30.0" minWidth="700.0" prefHeight="30.0" VBox.vgrow="NEVER">
+         <children>
+            <Label text="Caractères : ">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="caracteres" text="000">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Label>
+            <Label text="Lignes : ">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Label>
+            <Label fx:id="lignes" text="000">
+               <HBox.margin>
+                  <Insets right="10.0" />
+               </HBox.margin>
+            </Label>
+         </children>
+      </HBox>
+   </children>
+</VBox>

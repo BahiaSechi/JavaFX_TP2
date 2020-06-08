@@ -18,8 +18,6 @@ public class Main extends Application {
         primaryStage.setMinHeight(750);
         primaryStage.show();
 
-        primaryStage.getIcons().add(new Image("img\\logo.png"));
-
     }
 
 
