@@ -18,10 +18,7 @@ import javafx.event.ActionEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.image.ImageView;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 import java.net.URL;
 import java.util.ResourceBundle;
 import java.util.ArrayList;
@@ -175,9 +172,25 @@ public class Controller implements Initializable {
         engine.loadContent(textHtml.getText());
     }
 
-    public void saveFile(ActionEvent actionEvent) { }
+    public void saveFile(ActionEvent actionEvent) {
+        if (isFileNamed) {
+            File file = new File("newFile.html");
+            try (FileWriter writtenFile = new FileWriter(file, false)) {
+                String text = textHtml.getText();
+                for (char caract : text.toCharArray()) {
+                    writtenFile.write(caract);
+                }
+                isFileSaved = true;
+            } catch (IOException e) {
+                e.printStackTrace();
+                isFileSaved = false;
+            }
+        } else {
+            saveFileAs();
+        }
+    }
 
-    public void saveFileAs(ActionEvent actionEvent) { }
+    public void saveFileAs() { }
 
     @FXML
     public void closeFile() {
