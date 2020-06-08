@@ -1,4 +1,4 @@
-# HTMl Editor : JavaFX
+# HTML Editor : JavaFX
 
 ## Second practical work of following course : "Java et Programmation Objet"
 
