@@ -48,7 +48,7 @@ public class Controller implements Initializable {
     boolean isFileSaved = false;
     boolean isFileNamed = false;
     String workingString;
-    private ArrayList<String> tabs_text = new ArrayList<>();
+    public ArrayList<String> tabs_text = new ArrayList<>();
 
     @FXML
     private ImageView newFileImage, openFileImage, saveFileImage, saveFileAsImage;
@@ -89,8 +89,7 @@ public class Controller implements Initializable {
         String[] linearray = tempcount.split("\n");
         lignes.setText(Integer.toString(linearray.length));
 
-
-        //this.tabs_text.set(tabs.getSelectionModel().getSelectedIndex(), textHtml.getText());
+        //tabs_text.set(tabs.getSelectionModel().getSelectedIndex(), textHtml.getText());
     }
 
     public void about(ActionEvent actionEvent) {
@@ -129,17 +128,64 @@ public class Controller implements Initializable {
     }
 
     public void newFile(ActionEvent actionEvent) {
-        closeFile();
+        //closeFile();
         isFileNamed = false;
         isFileSaved = false;
 
         tabs.getTabs().add(new Tab("unnamed.html"));
-        tabs.getTabs().get(0).setText("unnamed.html");
+        //tabs.getTabs().get(0).setText("unnamed.html");
+
+    }
+
+    public void newFileImage(MouseEvent event) {
+        //closeFile();
+        isFileNamed = false;
+        isFileSaved = false;
+
+        tabs.getTabs().add(new Tab("unnamed.html"));
+        //tabs.getTabs().get(0).setText("unnamed.html");
 
     }
 
     public void openFile(ActionEvent actionEvent) {
        // Show files with HTML extension
+        FileChooser chooser = new FileChooser();
+        chooser.setTitle("Open a HTML file");
+        FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("HTML files (*.html)", "*.html");
+        chooser.getExtensionFilters().add(extFilter);
+
+        // Open window to choose a file
+        File file = chooser.showOpenDialog(new Stage());
+
+        // Continue reading until the end of the file
+        // doc : https://www.geeksforgeeks.org/different-ways-reading-text-file-java/
+        if (file != null) {
+            try (BufferedReader buffReader = new BufferedReader(new FileReader(file))) {
+                textHtml.clear();
+                updateView();
+
+                String stringInOpennedFile = "";
+
+                do {
+                    stringInOpennedFile = buffReader.readLine();
+                    if (stringInOpennedFile != null) {
+                        textHtml.appendText(stringInOpennedFile + "\n");
+                    }
+                } while (stringInOpennedFile != null);
+
+                tabs.getTabs().get(0).setText(file.getName());
+                isFileSaved = true;
+
+            } catch (IOException e) {
+                e.printStackTrace(System.err);
+            }
+        }
+        engine = viewHtml.getEngine();
+        engine.loadContent(textHtml.getText());
+    }
+
+    public void openFileImage(MouseEvent event) {
+        // Show files with HTML extension
         FileChooser chooser = new FileChooser();
         chooser.setTitle("Open a HTML file");
         FileChooser.ExtensionFilter extFilter = new FileChooser.ExtensionFilter("HTML files (*.html)", "*.html");
@@ -185,7 +231,7 @@ public class Controller implements Initializable {
 
         textHtml.clear();
         updateView();
-        tabs.getTabs().get(0).setText("unnamed.html");
+        //tabs.getTabs().get(0).setText("unnamed.html");
     }
 
     public void quit(ActionEvent actionEvent) {
@@ -193,7 +239,8 @@ public class Controller implements Initializable {
     }
 
     public void test(MouseEvent actionEvent) {
-        textHtml.setText(tabs_text.get(tabs.getSelectionModel().getSelectedIndex()));
+        System.out.println("coucou");
+        //textHtml.setText(Integer.toString(tabs.getSelectionModel().getSelectedIndex()));
     }
 
 

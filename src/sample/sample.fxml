@@ -47,7 +47,7 @@
             </MenuBar>
             <HBox alignment="CENTER_LEFT">
                <children>
-                  <ImageView fx:id="newFileImage" fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="newFileImage" fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#newFileImage">
                      <image>
                         <Image url="@../img/new_file.png" />
                      </image>
@@ -55,7 +55,7 @@
                         <Insets left="15.0" top="5.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fx:id="openFileImage" fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="openFileImage" fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#openFileImage">
                      <image>
                         <Image url="@../img/open_file.png" />
                      </image>
@@ -63,7 +63,7 @@
                         <Insets left="15.0" top="5.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fx:id="saveFileImage" fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="saveFileImage" fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#test">
                      <image>
                         <Image url="@../img/save_file.png" />
                      </image>
@@ -71,7 +71,7 @@
                         <Insets left="15.0" top="5.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fx:id="saveFileAsImage" fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="saveFileAsImage" fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#test">
                      <image>
                         <Image url="@../img/save_as.png" />
                      </image>
