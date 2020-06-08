@@ -63,7 +63,7 @@
                         <Insets left="15.0" top="5.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fx:id="saveFileImage" fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#test">
+                  <ImageView fx:id="saveFileImage" fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#saveFileImage">
                      <image>
                         <Image url="@../img/save_file.png" />
                      </image>
@@ -71,7 +71,7 @@
                         <Insets left="15.0" top="5.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fx:id="saveFileAsImage" fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#test">
+                  <ImageView fx:id="saveFileAsImage" fitHeight="29.0" fitWidth="33.0" pickOnBounds="true" preserveRatio="true" onMouseClicked="#saveFileAsImage">
                      <image>
                         <Image url="@../img/save_as.png" />
                      </image>
